@@ -14,6 +14,8 @@ from app.quantum.noise import create_noise_model
 from app.quantum.states import expected_probabilities
 
 
+
+
 @dataclass
 class TeleportationResult:
     circuit_qasm: str
@@ -34,14 +36,7 @@ def run_teleportation(
     noise_level: float = 0.0,
     seed: int | None = None,
 ) -> TeleportationResult:
-    """Execute teleportation circuit and return measurement statistics.
 
-    The recovered qubit (q2) should reproduce the input state's measurement
-    distribution in the computational basis.
-
-    We extract the marginal distribution of q2 (bit index 2) and compare it
-    against the ideal probabilities for the prepared state.
-    """
     qc, theta = create_teleportation_circuit(input_state)
 
     # Build simulator with optional noise
